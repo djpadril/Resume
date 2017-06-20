@@ -212,22 +212,18 @@ projects.display=function() {
 
 projects.display();
 
-$("#main").append(internationalizeButton);
-
-
-var oldName=bio.name;
 function inName() {
-    var finalName = oldName;
-    var space=oldName.indexOf(' ');//determine location of space between first and last names
-    var beginningFirstName=oldName[0];//first letter of first name
-    var reminderFirstName=oldName.slice(1, space).toLowerCase(); //reminder of first name
-    var firstName=beginningFirstName + reminderFirstName;
-    var lastName=oldName.slice(space+1).toUpperCase();
-    var finalName=firstName + '  ' + lastName;
-    // Don't delete this line!
-    return finalName;
+  var name = bio.name;
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1]=name[1].toUpperCase();
+	name[0]=name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
 
-  }
+	return name[0] +" "+ name[1];
+
+}
+
+$('#main').append(internationalizeButton);
 
   //if(bio.skills.length > 0) {
 
