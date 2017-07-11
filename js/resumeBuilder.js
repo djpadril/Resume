@@ -15,23 +15,23 @@
 
 bio.display=function() {
 
-  var formattedName = HTMLheaderName.replace("%data%", bio.name);
-  $("#header").append(formattedName);
-
   var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-  $("#header").append(formattedRole);
+  $("#header").prepend(formattedRole);
+
+  var formattedName = HTMLheaderName.replace("%data%", bio.name);
+  $("#header").prepend(formattedName);
 
   var formattedAdress = HTMLcontactGeneric.replace("%data%", bio.contacts.adress);
-  $("#topContacts").append(formattedAdress);
+  $("#topContacts, #footerContacts").append(formattedAdress);
 
   var formattedLocation= HTMLlocation.replace("%data%", bio.contacts.location);
-  $("#topContacts").append(formattedLocation);
+  $("#topContacts, #footerContacts").append(formattedLocation);
 
   var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-  $("#topContacts").append(formattedMobile);
+  $("#topContacts, #footerContacts").append(formattedMobile);
 
   var formattedEMail = HTMLemail.replace("%data%", bio.contacts.email);
-  $("#topContacts").append(formattedEMail);
+  $("#topContacts, #footerContacts").append(formattedEMail);
 
   var formattedPicture = HTMLbioPic.replace("%data%", bio.picture);
   $("#header").append(formattedPicture);
@@ -53,7 +53,7 @@ var education = {
     {
 			"name": "Höhere Fachschule für Wirtschaftsinformatik",
       "degree": "Business Data Specialist, Advanced Federal Diploma of Higher Education",
-			"major": "[economics, business information systems]",
+			"major": "economics, business information systems",
       "location": "Bern, Switzerland",
 			"dates": "2012 - 2015",
       "url": "https://www.ifa.ch/nc/weiterbildung/studiengaenge/kursdetail/dipl-wirtschaftsinformatikerin-hf/kurs/show/"
@@ -61,7 +61,7 @@ var education = {
 		{
 			"name": "Schule für Gestaltung Bern-Biel",
       "degree": "Polygraf EFZ",
-			"major": "[graphic design, media technology]",
+			"major": "graphic design, media technology",
       "location": "Bern, Switzerland",
 			"dates": "2001 - 2005",
       "url": "http://www.sfgb-b.ch/sfgb/de/bildungsangebote/berufsfachschule/lehrberufe/polygraf.html"
@@ -173,40 +173,46 @@ education.display();
 var projects = {
     "project": [
       {
-        "title": "Post Home Button",
-        "description": "Building a IoT device to deliver new services to the customer with a phygital access point. Business analasys and requirements engineeringto develope the hard- and softwareto bring postal services and products to the customers home",
-        "duration": "ongoing"
+        "title": "Order Button",
+        "description": "Building a IoT device to deliver new services to the customer with a phygital access point. Business analasys and requirements engineering to develope the hard- and software to bring postal services and products to the customers home",
+        "duration": "ongoing",
+        "image": "images/IoT.jpg"
       },
       {
         "title": "Outsourcing Swisscom Online",
         "description": "Development and Support of the existing software solution. Business analysis and requirements engineering",
         "duration": "1.5 years",
+        "image": "images/eCommerce.jpg"
       },
       {
         "title": "APM@SRG",
         "description": "As part of my diploma I did the project setup and procurement of an application performance management solution to measure the customer experience of relevant Business Applications for my customer SRG SSR.",
-        "duration": "8 months"
+        "duration": "8 months",
+        "image": "images/apm.jpg"
       }
     ]
   };
 
 projects.display=function() {
 
-      for (projectposition in projects.project) {
-        // create new div for workExperience
+      for (project in projects.project) {
+        // create new div for projectExperience
         $("#projects").append(HTMLprojectStart);
-        // concat employer and job position
-        var formattedProjectTitle = HTMLprojectTitle.replace ("%data%", projects.project[projectposition].title);
+
+        var formattedProjectTitle = HTMLprojectTitle.replace ("%data%", projects.project[project].title);
         $(".project-entry:last").append(formattedProjectTitle);
 
-        var formattedProjectDuration = HTMLprojectDates.replace ("%data%", projects.project[projectposition].duration);
+        var formattedProjectDuration = HTMLprojectDates.replace ("%data%", projects.project[project].duration);
         $(".project-entry:last").append(formattedProjectDuration);
 
-        var formattedProjectDescription = HTMLprojectDescription.replace ("%data%", projects.project[projectposition].description);
+        var formattedProjectDescription = HTMLprojectDescription.replace ("%data%", projects.project[project].description);
         $(".project-entry:last").append(formattedProjectDescription);
+
+        var formattedProjectImage = HTMLprojectImage.replace ("%data%", projects.project[project].image);
+        $(".project-entry:last").append(formattedProjectImage);
     }
   };
 
-projects.display;
+projects.display();
 
 $("#mapDiv").append(googleMap);
