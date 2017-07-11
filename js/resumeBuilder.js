@@ -105,7 +105,7 @@ education.display=function() {
       $("#education").append(HTMLschoolStart);
       var OnlineCourseName = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
       var OnlineCourseSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
-      var OnlineCourseTitle = OnineCourseName + OnlineCourseSchool;
+      var OnlineCourseTitle = OnlineCourseName + OnlineCourseSchool;
       $(".education-entry:last").append(OnlineCourseTitle);
 
       var OnlineCourseDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
