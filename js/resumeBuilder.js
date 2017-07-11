@@ -44,7 +44,7 @@ bio.display=function() {
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
     $("#skills:last").append(formattedSkill);
   }
-}
+};
 
 bio.display();
 
@@ -78,7 +78,7 @@ var education = {
 };
 
 education.display=function() {
-  for (school in education.schools) {
+  for (var school in education.schools) {
       $("#education").append(HTMLschoolStart);
 
       var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -101,18 +101,18 @@ education.display=function() {
 
       $("#education").append(HTMLonlineClasses);
 
-    for (onlineCourse in education.onlineCourses) {
+    for (var onlineCourse in education.onlineCourses) {
       $("#education").append(HTMLschoolStart);
-      var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
-      var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
-      var OnlineCourseTitle = formattedName + formattedSchool;
+      var OnlineCourseName = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+      var OnlineCourseSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
+      var OnlineCourseTitle = OnineCourseName + OnlineCourseSchool;
       $(".education-entry:last").append(OnlineCourseTitle);
 
-      var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
-      $(".education-entry:last").append(formattedDates);
+      var OnlineCourseDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
+      $(".education-entry:last").append(OnlineCourseDates);
 
-      var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
-      $(".education-entry:last").append(formattedUrl);
+      var OnlineCourseUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+      $(".education-entry:last").append(OnlineCourseUrl);
   }
 };
 
@@ -148,7 +148,7 @@ education.display();
   };
 
   work.display=function() {
-    for (job in work.jobs) {
+    for (var job in work.jobs) {
       // create new div for workExperience
       $("#workExperience").append(HTMLworkStart);
       // concat employer and job position
@@ -195,7 +195,7 @@ var projects = {
 
 projects.display=function() {
 
-      for (project in projects.project) {
+      for (var project in projects.project) {
         // create new div for projectExperience
         $("#projects").append(HTMLprojectStart);
 
