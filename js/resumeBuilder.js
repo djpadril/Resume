@@ -27,20 +27,20 @@ bio.display=function() {
   var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 
   //append all contacts to the html
-  $("#topContacts, #footerContacts").append(formattedLocation, formattedMobile, formattedGithub, formattedWelcomeMessage);
+  $("#topContacts, #footerContacts").append(formattedEMail, formattedMobile, formattedGithub, formattedLocation);
 
   var formattedPicture = HTMLbioPic.replace("%data%", bio.biopic);
   $("#header").append(formattedPicture);
 
   var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-  $("#header").append();
+  $("#header").append(formattedWelcomeMessage);
 
   $("#header").append(HTMLskillsStart);
 
   bio.skills.forEach (function(skill) {
     var formattedSkill = HTMLskills.replace("%data%", skill);
     $("#skills:last").append(formattedSkill);
-  })
+  });
 };
 
 bio.display();
@@ -110,7 +110,7 @@ education.display=function() {
 
       var OnlineCourseUrl = HTMLonlineURL.replace("%data%", onlineCourse.url);
       $(".education-entry:last").append(OnlineCourseUrl);
-  })
+  });
 };
 
 education.display();
@@ -162,7 +162,7 @@ education.display();
 
       var formattedDescription = HTMLworkDescription.replace ("%data%", job.description);
       $(".work-entry:last").append(formattedDescription);
-    })
+    });
   };
 
   work.display();
